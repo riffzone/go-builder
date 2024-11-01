@@ -1,0 +1,18 @@
+services:
+
+  go-builder:
+    container_name: go-builder
+    image: go-builder
+    restart: always
+    environment:
+      - TZ=Europe/Paris
+    volumes:
+      - /opt/dev:/opt/dev
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - www_shared_network
+
+networks:
+  www_shared_network:
+    name: www_shared_network
+    external: true
